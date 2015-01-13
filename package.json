@@ -1,0 +1,18 @@
+{ "name": "jascpal"
+, "description": "Paint Shop Pro Palette file reader/writer"
+, "version": "0.1.0"
+, "license": "MIT"
+, "bugs": "https://github.com/goto-bus-stop/jascpal"
+, "author": "goto-bus-stop <rene@kooi.me>"
+, "main": "lib/Palette"
+, "devDependencies":
+  { "6to5": "2.x"
+  , "mocha": "2.x" }
+, "scripts":
+  { "6to5": "node ./node_modules/6to5/bin/6to5/index.js --out-dir lib src"
+  , "test": "./node_modules/mocha/bin/mocha" }
+, "repository":
+  { "type": "git"
+  , "url" : "http://github.com/goto-bus-stop/jascpal.git"
+  }
+}
