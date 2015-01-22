@@ -49,7 +49,7 @@ export default function Palette(buf) {
 
 function parse(buf) {
   let colors = []
-    , lines = buf.split('\n')
+    , lines = buf.split(/\r?\n/)
 
   // lines[0] == "JASC-PAL\n"
   let version = lines[1] // probably always 0100

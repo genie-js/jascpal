@@ -42,6 +42,13 @@ describe('Palette:', function () {
 
       assert.strictEqual(pal.toString(), read('expected-simple.pal').toString('ascii'))
     })
+
+    it('supports carriage returns', function () {
+      var empty = Palette('JASC-PAL\r\n0100\r\n0\r\n')
+
+      assert.notEqual(empty.version, '0100\r')
+      assert.strictEqual(empty.version, '0100')
+    })
   })
 
   describe('creates new palettes', function () {
