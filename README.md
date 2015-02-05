@@ -3,6 +3,8 @@ jascpal
 
 Jasc Paint Shop Pro Palette file library in Node.js.
 
+[![NPM](https://nodei.co/npm/jascpal.png?compact=true)](https://nodei.co/npm/jascpal)
+
 ## Usage Example
 
 ```javascript
