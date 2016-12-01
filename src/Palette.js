@@ -1,8 +1,4 @@
-// tiny helper, for lack of Object.assign!
-let merge = (base, mixin) => {
-  Object.keys(mixin).forEach(key => base[key] = mixin[key])
-  return base
-}
+const assign = require('object-assign')
 
 // A JASC Paint Shop Pro Palette file.
 //
@@ -21,7 +17,7 @@ let merge = (base, mixin) => {
 // amount of lines
 // palette lines: three space-separated numbers (0-255), "<red> <green> <blue>"
 // ```
-export default function Palette(buf) {
+module.exports = function Palette(buf) {
   if (!(this instanceof Palette)) return new Palette(buf)
 
   if (!buf) buf = []
@@ -38,7 +34,7 @@ export default function Palette(buf) {
   }
 
   // internal API
-  merge(this, data)
+  assign(this, data)
   // public API
   data.colors.version = data.version
   Object.keys(Palette.prototype)
