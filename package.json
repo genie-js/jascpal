@@ -5,14 +5,17 @@
   "license": "MIT",
   "bugs": "https://github.com/goto-bus-stop/jascpal",
   "author": "goto-bus-stop <rene@kooi.me>",
-  "main": "lib/Palette",
+  "files": [
+    "/index.js"
+  ],
   "devDependencies": {
-    "6to5": "^3.6.5",
+    "buble": "^0.14.2",
     "mocha": "^3.2.0"
   },
   "scripts": {
-    "6to5": "node ./node_modules/6to5/bin/6to5/index.js --out-dir lib src",
-    "test": "./node_modules/mocha/bin/mocha"
+    "prepublish": "npm run build",
+    "build": "buble src/Palette.js > index.js",
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
