@@ -1,5 +1,7 @@
 const assign = require('object-assign')
 
+module.exports = Palette
+
 // A JASC Paint Shop Pro Palette file.
 //
 // Usage:
@@ -17,7 +19,7 @@ const assign = require('object-assign')
 // amount of lines
 // palette lines: three space-separated numbers (0-255), "<red> <green> <blue>"
 // ```
-module.exports = function Palette(buf) {
+function Palette(buf) {
   if (!(this instanceof Palette)) return new Palette(buf)
 
   if (!buf) buf = []
