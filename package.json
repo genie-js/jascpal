@@ -22,6 +22,6 @@
     "url": "http://github.com/goto-bus-stop/jascpal.git"
   },
   "dependencies": {
-    "object-assign": "^4.1.0"
+    "simple-assign": "^0.1.0"
   }
 }

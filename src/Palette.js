@@ -1,4 +1,4 @@
-const assign = require('object-assign')
+const assign = require('simple-assign')
 
 module.exports = Palette
 
