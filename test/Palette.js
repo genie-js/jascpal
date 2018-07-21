@@ -1,4 +1,4 @@
-var Palette = require('../lib/Palette')
+var Palette = require('../')
   , assert = require('assert')
   , readFile = require('fs').readFileSync
   , joinPath = require('path').join
