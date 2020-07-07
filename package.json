@@ -9,13 +9,15 @@
     "/index.js"
   ],
   "devDependencies": {
-    "buble": "^0.15.0",
-    "mocha": "^3.2.0"
+    "buble": "^0.19.6",
+    "standard": "^13.0.0",
+    "tap": "^12.7.0"
   },
   "scripts": {
     "prepublish": "npm run build",
     "build": "buble src/Palette.js > index.js",
-    "test": "mocha"
+    "test": "npm run build && standard && tap test/*.test.js",
+    "test-cov": "npm run build && standard && tap --100 test/*.test.js"
   },
   "repository": {
     "type": "git",

@@ -19,19 +19,18 @@ module.exports = Palette
 // amount of lines
 // palette lines: three space-separated numbers (0-255), "<red> <green> <blue>"
 // ```
-function Palette(buf) {
+function Palette (buf) {
   if (!(this instanceof Palette)) return new Palette(buf)
 
   if (!buf) buf = []
 
   let data
-  // creating a new palette
   if (Array.isArray(buf)) {
+    // creating a new palette
     data = { colors: buf, numColors: buf.length, version: '0100' }
-  }
-  // reading a palette
-  else {
-    let str = Buffer.isBuffer(buf) ? buf.toString('ascii') : buf
+  } else {
+    // reading a palette
+    const str = Buffer.isBuffer(buf) ? buf.toString('ascii') : buf
     data = parse(str)
   }
 
@@ -39,19 +38,21 @@ function Palette(buf) {
   assign(this, data)
   // public API
   data.colors.version = data.version
-  Object.keys(Palette.prototype)
-    .forEach(key => data.colors[key] = this[key].bind(this))
+  Object.keys(Palette.prototype).forEach((key) => {
+    data.colors[key] = this[key].bind(this)
+  })
 
   return data.colors
 }
 
-function parse(buf) {
-  let colors = []
-    , lines = buf.split(/\r?\n/)
+function parse (buf) {
+  const colors = []
+
+  const lines = buf.split(/\r?\n/)
 
   // lines[0] == "JASC-PAL\n"
-  let version = lines[1] // probably always 0100
-  let numColors = parseInt(lines[2], 10)
+  const version = lines[1] // probably always 0100
+  const numColors = parseInt(lines[2], 10)
 
   // TODO use lines.length instead of numColors, to be more forgiving?
   // maybe have a "loose" mode that will just do whatever is in the file
@@ -73,8 +74,8 @@ Palette.prototype.setColor = function (idx, color) {
 }
 
 Palette.prototype.toString = function () {
-  return 'JASC-PAL\n'
-       + this.version + '\n'
-       + this.colors.length + '\n'
-       + this.colors.map(color => color.join(' ')).join('\n')
+  return 'JASC-PAL\n' +
+       this.version + '\n' +
+       this.colors.length + '\n' +
+       this.colors.map(color => color.join(' ')).join('\n')
 }
